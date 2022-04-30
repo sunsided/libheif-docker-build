@@ -6,7 +6,9 @@
 	path = dav1d
 	url = https://code.videolan.org/videolan/dav1d.git
 	shallow = true
+	branch = 1.0.0
 [submodule "rav1e"]
 	path = rav1e
 	url = https://github.com/xiph/rav1e.git
 	shallow = true
+	branch = 0.5
