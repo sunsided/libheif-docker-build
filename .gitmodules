@@ -1,6 +1,6 @@
 [submodule "libheif"]
 	path = libheif
-	url = git@github.com:strukturag/libheif.git
+	url = https://github.com/strukturag/libheif.git
 	shallow = true
 [submodule "dav1d"]
 	path = dav1d
@@ -8,5 +8,5 @@
 	shallow = true
 [submodule "rav1e"]
 	path = rav1e
-	url = git@github.com:xiph/rav1e.git
+	url = https://github.com/xiph/rav1e.git
 	shallow = true
