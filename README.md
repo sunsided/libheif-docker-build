@@ -3,6 +3,6 @@
 To pull this repo, use
 
 ```
-git pull --recursive https://github.com/sunsided/libheif-docker-build.git
+git clone --recursive https://github.com/sunsided/libheif-docker-build.git
 ```
 
