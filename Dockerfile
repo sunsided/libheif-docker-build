@@ -4,12 +4,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
 RUN apt-get update
-RUN apt-get install -y build-essential autotools-dev pkg-config m4 libtool automake autoconf gettext
-RUN apt-get install -y libaom-dev libde265-dev libx265-dev libturbojpeg0-dev libpng-dev
+RUN apt-get install -y build-essential autotools-dev pkg-config m4 libtool automake autoconf gettext meson ninja-build nasm git
+RUN apt-get install -y libaom-dev libde265-dev libx265-dev libturbojpeg0-dev libpng-dev libgdk-pixbuf2.0-dev
 
 # Build dav1d
 FROM build-base AS dav1d-build
-RUN apt-get install -y meson ninja-build nasm git
 RUN git clone --depth 1 --branch 1.0.0 https://code.videolan.org/videolan/dav1d.git /dav1d
 WORKDIR /dav1d
 RUN meson build --default-library=static --buildtype release --prefix "$(pwd)/dist" $@
@@ -31,11 +30,10 @@ WORKDIR /libheif
 ADD libheif .
 COPY --from=dav1d-build /dav1d ./third-party/dav1d
 COPY --from=rav1e-build /rav1e ./third-party/rav1e
-#RUN mv /dav1d third-party/
-#RUN mv /rav1e third-party/
+ENV PKG_CONFIG_PATH /libheif/third-party/rav1e/dist/lib/pkgconfig:/libheif/third-party/dav1d/dist/lib/x86_64-linux-gnu/pkgconfig
+RUN ldconfig
 RUN ./autogen.sh
 RUN ./configure
 
-#RUN ls -lah /libheif/third-party/
-
-# RUN make
+RUN make
+RUN make install
