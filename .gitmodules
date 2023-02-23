@@ -2,3 +2,15 @@
 	path = libheif
 	url = https://github.com/strukturag/libheif.git
 	shallow = true
+	branch = v1.15.1
+[submodule "dav1d"]
+	path = dav1d
+	url = https://code.videolan.org/videolan/dav1d.git
+	shallow = true
+	branch = 1.1.0
+[submodule "rav1e"]
+	path = rav1e
+	url = https://github.com/xiph/rav1e.git
+	shallow = true
+	branch = v0.6.3
+
